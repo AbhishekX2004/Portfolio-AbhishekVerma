@@ -1,0 +1,184 @@
+html{
+  background-color: #2A2927;
+  color: whitesmoke;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer p {
+  margin: 5px 10px;
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 600px) {
+  .footer p {
+      flex: 1;
+      justify-content: space-around;
+      max-width: none;
+  }
+}
+
+.typewriter-container {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.typewriter-text {
+  border-right: 2px solid whitesmoke;
+  padding-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: whitesmoke; }
+}
+
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10; 
+  background: rgba(42, 41, 39, 0.5); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.header-logo {
+  height: 60px;
+  padding-top: 10px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-right .flat-button,
+.header-right .contact-link {
+  margin-right: 1rem;
+  text-decoration: none;
+  background-color: #2A2927;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 2.5vh;
+  display: inline-block;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.header-right .flat-button:hover{
+  background-color: #1f1e1c;
+}
+
+.header-right .contact-link {
+  color: cyan;
+  font-weight: bold;
+  background-color: transparent; /* Make sure the Contact Me link doesn't have the button background */
+  padding: 0; /* Remove padding to keep it like a regular link */
+}
+
+
+@keyframes textShine {
+  0% {
+      background-position: 0% 50%;
+  }
+
+  100% {
+      background-position: 100% 50%;
+  }
+}
+
+.myGradientText {
+  font-weight: bolder;
+  background: linear-gradient(to right,
+          #7953cd 20%,
+          #00affa 30%,
+          #0190cd 70%,
+          #764ada 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 500% auto;
+  animation: textShine 5s ease-in-out infinite alternate;
+}
+
+.landing-section {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.landing-section h1 {
+  font-size: 80px;
+  margin: 0;
+}
+
+.landing-section h2,.landing-section h2 span {
+  font-size: 60px;
+  margin: 0;
+}
+
+.landing-section span {
+  font-size: 24px;
+}
+
+.introduction-section {
+  padding: 2rem;
+  margin: 0 auto;
+  margin-top: 30px;
+  max-width: 800px;
+}
+
+.introduction-section h4 {
+  font-size: 32px;
+  margin-bottom: 1rem;
+}
+
+.introduction-section p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.skills-section {
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.skills-section h4 {
+  font-size: 32px;
+  margin-bottom: 1rem;
+}
+
+.icons-landing ul{
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+}
+
+.icons-landing ul li{
+  padding: 0 60px;
+}
