@@ -1,7 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from "framer-motion";
 import Typewriter from './Typewriter';
+import { skillItems } from './skills.js';
 
 const Landing = () => {
 	const introductionHeaderRef = useRef(null);
@@ -91,67 +92,21 @@ const Landing = () => {
 					ref={skillsParaRef}
 					initial={{ opacity: 0, y: 50 }}
 					animate={{ opacity: skillsParaInView ? 1 : 0, y: skillsParaInView ? 0 : 50 }}
-					transition={{ duration: 1, delay: 1.5 }}
+					transition={{ duration: 1, delay: 1 }}
 				>
 					<div className="skills-section">
 						<ul className="skills-list">
-							<li className="skill-item">
-								<img src="./images/skills/Java.svg" alt="Java" /><span>Java</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/C.svg" alt="C" /> <span>C</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/Javascript.svg" alt="JavaScript" /> <span>JavaScript</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/HTMLCSS.svg" alt="HTML/CSS" /> <span>HTML/CSS</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/Git.svg" alt="Git" /> <span>Git</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/github.svg" alt="Github" /> <span>Github</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/Node.svg" alt="Node" /> <span>Node</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/ExpressJs.svg" alt="ExpressJS" /> <span>ExpressJS</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/RestAPI.svg" alt="Rest API" /> <span>Rest API</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/React.svg" alt="React" /> <span>React</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/firebase.png" alt="Firebase" /> <span>Firebase</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/PostgreSQL.png" alt="PostgreSQL" /> <span>PostgreSQL</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/MySQL.svg" alt="MySQL" /> <span>MySQL</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/MongoDB.svg" alt="MongoDB" /> <span>MongoDB</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/MUI.svg" alt="MUI" /> <span>MUI</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/Redux.svg" alt="Redux" /> <span>Redux</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/VSCode.svg" alt="VS Code" /> <span>VS Code</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/Postman.svg" alt="Postman" /> <span>Postman</span>
-							</li>
-							<li className="skill-item">
-								<img src="./images/skills/Render.jpg" alt="Render" /> <span>Render</span>
-							</li>
+							{skillItems.map((item, index) => (
+								<motion.li
+									key={index}
+									className="skill-item"
+									initial={{ opacity: 0, y: 50 }}
+									animate={{ opacity: skillsParaInView ? 1 : 0, y: skillsParaInView ? 0 : 50 }}
+									transition={{ duration: 1, delay: 0.3*index }}
+								>
+									<img src={item.src} alt={item.alt} /><span>{item.text}</span>
+								</motion.li>
+							))}
 						</ul>
 					</div>
 				</motion.p>

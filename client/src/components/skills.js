@@ -1,0 +1,21 @@
+export const skillItems = [
+    { src: "./images/skills/Java.svg", alt: "Java", text: "Java" },
+    { src: "./images/skills/C.svg", alt: "C", text: "C" },
+    { src: "./images/skills/Javascript.svg", alt: "JavaScript", text: "JavaScript" },
+    { src: "./images/skills/HTMLCSS.svg", alt: "HTML/CSS", text: "HTML/CSS" },
+    { src: "./images/skills/Git.svg", alt: "Git", text: "Git" },
+    { src: "./images/github.svg", alt: "Github", text: "Github" },
+    { src: "./images/skills/Node.svg", alt: "Node", text: "Node" },
+    { src: "./images/skills/ExpressJs.svg", alt: "ExpressJS", text: "ExpressJS" },
+    { src: "./images/skills/RestAPI.svg", alt: "Rest API", text: "Rest API" },
+    { src: "./images/skills/React.svg", alt: "React", text: "React" },
+    { src: "./images/skills/firebase.png", alt: "Firebase", text: "Firebase" },
+    { src: "./images/skills/PostgreSQL.png", alt: "PostgreSQL", text: "PostgreSQL" },
+    { src: "./images/skills/MySQL.svg", alt: "MySQL", text: "MySQL" },
+    { src: "./images/skills/MongoDB.svg", alt: "MongoDB", text: "MongoDB" },
+    { src: "./images/skills/MUI.svg", alt: "MUI", text: "MUI" },
+    { src: "./images/skills/Redux.svg", alt: "Redux", text: "Redux" },
+    { src: "./images/skills/VSCode.svg", alt: "VS Code", text: "VS Code" },
+    { src: "./images/skills/Postman.svg", alt: "Postman", text: "Postman" },
+    { src: "./images/skills/Render.jpg", alt: "Render", text: "Render" }
+];
