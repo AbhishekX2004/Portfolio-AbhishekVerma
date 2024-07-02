@@ -8,6 +8,7 @@ function Header(props) {
     <nav className="header-nav">
       <Link to="/"><img src="AIcon3.png" height="90px" alt="A logo" className="header-logo" /></Link>
       <div className="header-right">
+        <a href='#aboutMe' className="flat-button" style={{marginRight:0}}>About Me</a>
         <a href={resumeURL} target="_blank" rel="noopener noreferrer" className="flat-button">Resume</a>
         <Link to="/contactMe" className="contact-link">Contact Me</Link>
       </div>

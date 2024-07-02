@@ -1,101 +1,163 @@
-import React, { useEffect } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import React, { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { motion, useInView } from "framer-motion";
 import Typewriter from './Typewriter';
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-};
-
-const iconVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 2 } },
-  hiddenLeft: { opacity: 0, x: -80 },
-  visibleLeft: { opacity: 1, x: 0, transition: { duration: 2 } },
-  hiddenRight: { opacity: 0, x: 80 },
-  visibleRight: { opacity: 1, x: 0, transition: { duration: 2 } },
-};
-
 const Landing = () => {
-  const controlsIntro = useAnimation();
-  const controlsPara = useAnimation();
-  const controlsIcons = useAnimation();
-  const refIntro = useInView({ triggerOnce: false, threshold: 0.5 });
-  const refSkill = useInView({ triggerOnce: false, threshold: 0.5 });
-  const refIcons = useInView({ triggerOnce: true, threshold: 0.5 });
+	const introductionHeaderRef = useRef(null);
+	const introductionParaRef = useRef(null);
+	const skillsHeaderRef = useRef(null);
+	const skillsParaRef = useRef(null);
 
-  useEffect(() => {
-    if (refIntro.inView) {
-      controlsIntro.start('visible');
-    } else {
-      controlsIntro.start('hidden');
-    }
-  }, [controlsIntro, refIntro.inView]);
+	const introductionHeaderInView = useInView(introductionHeaderRef, { once: false });
+	const introductionParaInView = useInView(introductionParaRef, { once: false });
+	const skillsHeaderInView = useInView(skillsHeaderRef, { once: false });
+	const skillsParaInView = useInView(skillsParaRef, { once: false });
 
-  useEffect(() => {
-    if (refSkill.inView) {
-      controlsPara.start('visible');
-    } else {
-      controlsPara.start('hidden');
-    }
-  }, [controlsPara, refSkill.inView]);
+	return (
+		<div className="landing-container">
+			<div className="landing-section">
+				<h1>Hi There!</h1>
+				<h2>I'm <span className="myGradientText">Abhishek Verma</span></h2>
+				<span>An aspiring Software Developer</span>
 
-  useEffect(() => {
-    if (refIcons.inView) {
-      controlsIcons.start(['visibleLeft', 'visible', 'visibleRight']);
-    } else {
-      controlsIcons.start(['hiddenLeft', 'hidden', 'hiddenRight']);
-    }
-  }, [controlsIcons, refIcons.inView]);
+				<Typewriter />
 
-  return (
-    <div className="landing-container">
-      <div className="landing-section">
-        <h1>Hi There!</h1>
-        <h2>I'm <span className="myGradientText">Abhishek Verma</span></h2>
-        <span>An aspiring Software Developer</span>
-        <Typewriter />
-        <div className="icons-landing">
-          <ul ref={refIcons.ref}>
-            <motion.li initial="hiddenLeft" animate={controlsIcons} variants={iconVariants}>
-              <a href="https://github.com/AbhishekX2004">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" className="bi bi-github" viewBox="0 0 16 16">
-                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                </svg>
-              </a>
-            </motion.li>
-            <motion.li initial="hidden" animate={controlsIcons} variants={iconVariants}>
-              <a href="https://www.linkedin.com/in/abhishek-verma-05177625b">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" className="bi bi-linkedin" viewBox="0 0 16 16">
-                  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                </svg>
-              </a>
-            </motion.li>
-            <motion.li initial="hiddenRight" animate={controlsIcons} variants={iconVariants}>
-              <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" className="bi bi-twitter-x" viewBox="0 0 16 16">
-                  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
-                </svg>
-              </a>
-            </motion.li>
-          </ul>
-        </div>
-      </div>
-      <motion.div ref={refIntro.ref} initial="hidden" animate={controlsIntro} variants={fadeInUp} className="introduction-section">
-        <h4>Introduction</h4>
-        <p>
-          I’m Abhishek Verma, currently I live in Bengaluru India, working as a Junior Engineer at Goldman Sachs.
-          I’ve been flexible with technologies, enjoying the journey from creating games like Super Mario in C++ with SFML, to exploring Java with its RMI, Socket, and Swing libraries. Transitioning to web development, I’ve delved into various libraries and frameworks such as Next.js, TypeScript, Framer Motion, Socket.io, and Redux. I also explored Docker, AWS, DNS management, and other technologies during this transition.
-          During my time at Goldman Sachs, I focused on Tableau, data modeling, and am currently involved in Playwright test automation, Cucumber, and contributing to API services with Spring Boot and RxJava.
-          In my free time, I enjoy watching web series, playing video games, and experimenting with new technologies. I’m always eager to learn about new projects, so please feel free to reach out to me.
-        </p>
-      </motion.div>
-      <motion.div ref={refSkill.ref} initial="hidden" animate={controlsPara} variants={fadeInUp} className="skills-section">
-        <h4>Skill Set</h4>
-        {/* Add the content for Skill Set here */}
-      </motion.div>
-    </div>
-  );
+				<div className="icons-landing">
+					<ul>
+						<motion.li
+							initial={{ opacity: 0, x: -50, rotate: -90 }}
+							animate={{ opacity: 1, x: 0, rotate: 0 }}
+							transition={{ duration: 2 }}
+						>
+							<a href="https://www.linkedin.com/in/abhishek-verma-05177625b">
+								<img src='./images/linkedin.svg' alt='Linkedin Logo'></img>
+							</a>
+						</motion.li>
+						<motion.li
+							initial={{ opacity: 0, rotate: 360 }}
+							animate={{ opacity: 1, rotate: 0 }}
+							transition={{ duration: 3 }}
+						>
+							<a href="https://github.com/AbhishekX2004">
+								<img src='./images/github.svg' alt='Github Logo'></img>
+							</a>
+						</motion.li>
+						<motion.li
+							initial={{ opacity: 0, x: 50, rotate: 90 }}
+							animate={{ opacity: 1, x: 0, rotate: 0 }}
+							transition={{ duration: 2 }}
+						>
+							<a href="https://x.com/Abhishek_X_2004">
+								<img src='./images/x.svg' alt='X Logo (previously Twitter)'></img>
+							</a>
+						</motion.li>
+					</ul>
+				</div>
+			</div>
+
+			<div id='aboutMe' className='introduction-section'>
+				<motion.h4
+					ref={introductionHeaderRef}
+					initial={{ opacity: 0, x: -40 }}
+					animate={{ opacity: introductionHeaderInView ? 1 : 0, x: introductionHeaderInView ? 0 : -40 }}
+					transition={{ duration: 1 }}
+				>
+					About Me
+				</motion.h4>
+				<motion.p
+					ref={introductionParaRef}
+					initial={{ opacity: 0, y: 50 }}
+					animate={{ opacity: introductionParaInView ? 1 : 0, y: introductionParaInView ? 0 : 50 }}
+					transition={{ duration: 1, delay: 0.5 }}
+				>
+					I’m Abhishek Verma, currently I live in Indore India, pursuing BTech in IT from Shri G. S. Institute of Technology and Science.
+					I’ve been leveling up my tech skills and problem solving. Transitioning to web development, I’ve delved into various libraries and frameworks such as React.js, Javascript, Framer Motion, and Redux. I also explored Firebase as a cloud platform.
+					In my free time, I enjoy watching anime, and experimenting with new technologies. I’m always eager to learn about new projects, so please feel free to
+					<Link to={`/contactMe`} style={{ color: "cyan", textDecoration: 'none' }}> reach out to me</Link>.
+				</motion.p>
+			</div>
+
+			<div id='skills' className='skills-section'>
+				<motion.h4
+					ref={skillsHeaderRef}
+					initial={{ opacity: 0, x: -40 }}
+					animate={{ opacity: skillsHeaderInView ? 1 : 0, x: skillsHeaderInView ? 0 : -40 }}
+					transition={{ duration: 1, delay: 0.5 }}
+				>
+					Some of the technologies I have worked on:
+				</motion.h4>
+				<motion.p
+					ref={skillsParaRef}
+					initial={{ opacity: 0, y: 50 }}
+					animate={{ opacity: skillsParaInView ? 1 : 0, y: skillsParaInView ? 0 : 50 }}
+					transition={{ duration: 1, delay: 1.5 }}
+				>
+					<div className="skills-section">
+						<ul className="skills-list">
+							<li className="skill-item">
+								<img src="./images/skills/Java.svg" alt="Java" /><span>Java</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/C.svg" alt="C" /> <span>C</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/Javascript.svg" alt="JavaScript" /> <span>JavaScript</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/HTMLCSS.svg" alt="HTML/CSS" /> <span>HTML/CSS</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/Git.svg" alt="Git" /> <span>Git</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/github.svg" alt="Github" /> <span>Github</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/Node.svg" alt="Node" /> <span>Node</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/ExpressJs.svg" alt="ExpressJS" /> <span>ExpressJS</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/RestAPI.svg" alt="Rest API" /> <span>Rest API</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/React.svg" alt="React" /> <span>React</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/firebase.png" alt="Firebase" /> <span>Firebase</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/PostgreSQL.png" alt="PostgreSQL" /> <span>PostgreSQL</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/MySQL.svg" alt="MySQL" /> <span>MySQL</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/MongoDB.svg" alt="MongoDB" /> <span>MongoDB</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/MUI.svg" alt="MUI" /> <span>MUI</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/Redux.svg" alt="Redux" /> <span>Redux</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/VSCode.svg" alt="VS Code" /> <span>VS Code</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/Postman.svg" alt="Postman" /> <span>Postman</span>
+							</li>
+							<li className="skill-item">
+								<img src="./images/skills/Render.jpg" alt="Render" /> <span>Render</span>
+							</li>
+						</ul>
+					</div>
+				</motion.p>
+			</div>
+		</div>
+	);
 };
 
 export default Landing;

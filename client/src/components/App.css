@@ -145,6 +145,17 @@ html{
   font-size: 24px;
 }
 
+@media (max-width: 600px) {
+  .landing-section h2,.landing-section h2 span {
+    font-size: 30px;
+    margin: 0;
+  }
+  
+  .landing-section span {
+    font-size: 20px;
+  }
+}
+
 .introduction-section {
   padding: 2rem;
   margin: 0 auto;
@@ -163,14 +174,56 @@ html{
 }
 
 .skills-section {
-  padding: 2rem;
-  margin: 0 auto;
+  padding: 1rem;
+  margin: auto;
   max-width: 800px;
 }
 
 .skills-section h4 {
   font-size: 32px;
   margin-bottom: 1rem;
+  margin-top: 15px;
+}
+
+.skills-section {
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.skills-list {
+  list-style: none;
+  display: grid;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.skill-item img {
+  width: 35px;
+  height: 35px; 
+}
+
+@media (min-width: 768px) {
+  .skills-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .skills-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .icons-landing ul{
@@ -182,3 +235,10 @@ html{
 .icons-landing ul li{
   padding: 0 60px;
 }
+
+@media (max-width: 600px) {
+  .icons-landing ul li{
+    padding: 0 30px;
+  }
+}
+
