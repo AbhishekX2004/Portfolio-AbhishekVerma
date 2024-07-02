@@ -1,19 +1,33 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * const {onCall} = require("firebase-functions/v2/https");
- * const {onDocumentWritten} = require("firebase-functions/v2/firestore");
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
- */
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+const express = require("express");
+const cors = require("cors");
+const {Timestamp} = require("firebase-admin/firestore");
 
-const {onRequest} = require("firebase-functions/v2/https");
-const logger = require("firebase-functions/logger");
+admin.initializeApp();
 
-// Create and deploy your first functions
-// https://firebase.google.com/docs/functions/get-started
+const db = admin.firestore();
+const app = express();
 
-// exports.helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+app.use(cors({origin: true}));
+app.use(express.json());
+
+app.post("/contact", async (req, res) => {
+  try {
+    const {email, name, subject, body} = req.body;
+
+    await db.collection("contacts").doc(email).set({
+      email,
+      name,
+      subject,
+      body,
+      timestamp: Timestamp.fromDate(new Date()),
+    });
+    res.status(200).send({message: "Contact form submitted successfully"});
+  } catch (error) {
+    console.error("Error adding document: ", error);
+    res.status(500).send({message: "Error submitting the form"});
+  }
+});
+
+exports.api = functions.https.onRequest(app);
