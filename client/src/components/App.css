@@ -92,8 +92,8 @@ html{
 .header-right .contact-link {
   color: cyan;
   font-weight: bold;
-  background-color: transparent; /* Make sure the Contact Me link doesn't have the button background */
-  padding: 0; /* Remove padding to keep it like a regular link */
+  background-color: transparent; 
+  padding: 0;
 }
 
 

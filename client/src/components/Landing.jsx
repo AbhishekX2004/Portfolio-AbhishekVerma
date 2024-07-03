@@ -88,28 +88,27 @@ const Landing = () => {
 				>
 					Some of the technologies I have worked on:
 				</motion.h4>
-				<motion.p
+				<motion.div
 					ref={skillsParaRef}
+					className="skills-section"
 					initial={{ opacity: 0, y: 50 }}
 					animate={{ opacity: skillsParaInView ? 1 : 0, y: skillsParaInView ? 0 : 50 }}
 					transition={{ duration: 1, delay: 1 }}
 				>
-					<div className="skills-section">
-						<ul className="skills-list">
-							{skillItems.map((item, index) => (
-								<motion.li
-									key={index}
-									className="skill-item"
-									initial={{ opacity: 0, y: 50 }}
-									animate={{ opacity: skillsParaInView ? 1 : 0, y: skillsParaInView ? 0 : 50 }}
-									transition={{ duration: 1, delay: 0.3*index }}
-								>
-									<img src={item.src} alt={item.alt} /><span>{item.text}</span>
-								</motion.li>
-							))}
-						</ul>
-					</div>
-				</motion.p>
+					<ul className="skills-list">
+						{skillItems.map((item, index) => (
+							<motion.li
+								key={index}
+								className="skill-item"
+								initial={{ opacity: 0, y: 50 }}
+								animate={{ opacity: skillsParaInView ? 1 : 0, y: skillsParaInView ? 0 : 50 }}
+								transition={{ duration: 1, delay: 0.3 * index }}
+							>
+								<img src={item.src} alt={item.alt} /><span>{item.text}</span>
+							</motion.li>
+						))}
+					</ul>
+				</motion.div>
 			</div>
 		</div>
 	);

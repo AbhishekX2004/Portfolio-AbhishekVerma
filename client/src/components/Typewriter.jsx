@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 const Typewriter = () => {
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [letterIndex, setLetterIndex] = useState(0);
-  const words = ["Developer", "Programmer", "Tech Enthusiast", "Software Engineer"];
   const typingSpeed = 200;
   const deletingSpeed = 100;
   const delayBetweenWords = 1500;
+
+  const words = useMemo(() => ["Developer", "Programmer", "Tech Enthusiast", "Software Engineer"], []);
 
   const timeoutRef = useRef(null);
 
@@ -39,7 +40,7 @@ const Typewriter = () => {
     return () => {
       clearTimeout(timeoutRef.current);
     };
-  }, [letterIndex, isDeleting, wordIndex,words]);
+  }, [letterIndex, isDeleting, wordIndex, words]);
 
   return (
     <p className="typewriter-container">

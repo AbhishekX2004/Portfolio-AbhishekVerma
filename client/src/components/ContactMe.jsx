@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 
+const URL = process.env.REACT_APP_API_URL;
+
 function ContactMe() {
     const [formData, setFormData] = useState({
         email: "",
@@ -24,7 +26,7 @@ function ContactMe() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://127.0.0.1:5001/portfolio-abhishekverma/us-central1/api/contact", formData);
+            const response = await axios.post(`${URL}/contact`, formData);
             setResponseMessage(response.data.message);
             setShowPopup(true);
             setTimeout(() => {
