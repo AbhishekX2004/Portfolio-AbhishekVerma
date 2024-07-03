@@ -72,9 +72,16 @@ const Landing = () => {
 					animate={{ opacity: introductionParaInView ? 1 : 0, y: introductionParaInView ? 0 : 50 }}
 					transition={{ duration: 1, delay: 0.5 }}
 				>
-					I’m Abhishek Verma, currently I live in Indore India, pursuing BTech in IT from Shri G. S. Institute of Technology and Science.
-					I’ve been leveling up my tech skills and problem solving. Transitioning to web development, I’ve delved into various libraries and frameworks such as React.js, Javascript, Framer Motion, and Redux. I also explored Firebase as a cloud platform.
-					In my free time, I enjoy watching anime, and experimenting with new technologies. I’m always eager to learn about new projects, so please feel free to
+					I'm Abhishek Verma, currently residing in Indore, India, and pursuing my BTech degree in the field of Information Technology from <a href="https://www.sgsits.ac.in/" style={{ color: "cyan", textDecoration: 'none' }}>Shri G. S. Institute of Technology and Science</a>. 
+					I've been enhancing my tech skills and problem-solving abilities. In web development, I've explored various libraries and frameworks such as 
+					<span style={{color:"cyan"}}> ReactJS</span>,
+					<span style={{color:"cyan"}}> Framer Motion</span>, and
+					<span style={{color:"cyan"}}> Redux</span>,
+					and I have also delved into 
+					<span style={{color:"cyan"}}> Firebase </span>
+					as a cloud platform. 
+					In my free time, I enjoy watching anime and experimenting with new technologies. 
+					I'm always eager to learn about new projects, so please feel free to
 					<Link to={`/contactMe`} style={{ color: "cyan", textDecoration: 'none' }}> reach out to me</Link>.
 				</motion.p>
 			</div>
