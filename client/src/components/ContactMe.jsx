@@ -50,6 +50,7 @@ function ContactMe() {
 
     return (
         <div>
+            <h1 style={{textAlign: "center"}}>Contact Me</h1>
             <form onSubmit={handleSubmit} className="form-container">
                 <div className="input-container">
                     <label>Email:</label>
